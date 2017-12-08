@@ -1,0 +1,134 @@
+.inputbox {
+  height: 50px;
+  width: 300px;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+  .inputbox .input {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    padding: 16.5px 0;
+    border: 0;
+    background: none;
+    width: 50px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 100%;
+    transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out, padding 0.2s;
+    transition-delay: 0s, 0.4s, 0s;
+    box-shadow: 0 0 0 1px currentColor;
+    color: inherit;
+    cursor: pointer;
+    padding: 16.5px 0;
+    padding-right: 50px;
+    font-weight: lighter;
+    font-family: 'Roboto'; }
+    .inputbox .input:focus, .inputbox .input:valid {
+      width: 100%;
+      transition-delay: 0.4s, 0s, 0.4s;
+      outline: 0;
+      border-radius: 0;
+      cursor: text;
+      padding-left: 16.5px; }
+      .inputbox .input:focus + .del, .inputbox .input:valid + .del {
+        pointer-events: all;
+        left: calc(100% - 25px);
+        transition-delay: 0.4s; }
+        .inputbox .input:focus + .del:focus, .inputbox .input:valid + .del:focus {
+          box-shadow: 0 0 0 1px currentColor;
+          height: 37.5px;
+          width: 37.5px; }
+        .inputbox .input:focus + .del:before, .inputbox .input:valid + .del:before {
+          transform: translate(-50%, -50%) rotate(-45deg) scaleY(0.7);
+          transition-delay: 0s; }
+        .inputbox .input:focus + .del:after, .inputbox .input:valid + .del:after {
+          transform: translate(-50%, -50%) rotate(45deg) scaleY(0.7);
+          transition-delay: 0.2s; }
+  .inputbox .del {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    background: none;
+    border-radius: 100%;
+    border: 0;
+    pointer-events: none;
+    transition: left 0.4s ease-in-out;
+    transition-delay: 0s;
+    color: inherit;
+    cursor: pointer; }
+    .inputbox .del:focus {
+      outline: none; }
+    .inputbox .del:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background: currentColor;
+      width: 1px;
+      height: 37.5px;
+      transform: translate(32.25px, 32.25px) translate(-50%, -50%) rotate(-45deg) scaleY(1);
+      transition: transform 0.2s ease-in-out;
+      transition-delay: 0.6s; }
+    .inputbox .del:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background: currentColor;
+      width: 1px;
+      height: 37.5px;
+      transform: translate(-50%, -50%) rotate(45deg) scaleY(0);
+      transition: transform 0.2s ease-in-out;
+      transition-delay: 0.4s; }
+
+.results-wrapper {
+  margin-top: 150px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #C3C3E5;
+  border-radius: 3px; }
+  .results-wrapper.hidden {
+    display: none; }
+
+.frame-wrapper {
+  padding: 15px; }
+  .frame-wrapper .frame-header {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between; }
+  .frame-wrapper iframe {
+    min-height: 500px;
+    width: 100%; }
+
+.result-item {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: #F1F0FF;
+  text-decoration: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  color: #443266;
+  text-align: initial; }
+  .result-item .result-title {
+    font-size: 15px;
+    font-weight: 700; }
+  .result-item .result-description {
+    font-weight: 400; }
+
+body {
+  background-color: #5a279c;
+  color: #fff; }

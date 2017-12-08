@@ -1,0 +1,28 @@
+.results-wrapper {
+  margin-top: 150px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: $result-wrapper;
+  border-radius: 3px;
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.frame-wrapper {
+  padding: 15px;
+
+  .frame-header {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  iframe {
+    min-height: 500px;
+    width: 100%;
+  }
+}

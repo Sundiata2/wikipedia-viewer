@@ -1,0 +1,12 @@
+@import "./components/_variables.scss";
+@import "./components/_search-bar.scss";
+@import "./components/_result-wrapper.scss";
+@import "./components/_result-item.scss";
+
+
+$green: green;
+
+body {
+  background-color: $search-bar-purple;
+  color: $white;
+}

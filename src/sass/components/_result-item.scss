@@ -1,0 +1,22 @@
+.result-item {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: $result-background;
+  text-decoration: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  color: #443266;
+  text-align: initial;
+
+  .result-title {
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .result-description {
+    font-weight: 400;
+  }
+}
