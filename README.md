@@ -16,12 +16,15 @@ my-app/
     index.html
     favicon.ico
   src/
+    actions/
+    components/
+    reducers/
+    sass/
     App.css
     App.js
     App.test.js
     index.css
     index.js
-    logo.svg
 ```
 
 For the project to build, **these files must exist with exact filenames**:
@@ -42,7 +45,15 @@ They will not be included in the production build so you can use them for things
 
 ## Available Scripts
 
-In the project directory, you can run:
+After cloning, in the project directory, you can run:
+
+### `nvm use 8`
+
+Use version 8 of node version manager to run this app.
+
+### `npm i`
+
+Get the dependencies.
 
 ### `npm start`
 
@@ -54,8 +65,9 @@ You will also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](#running-tests) for more information.
+Runs the tests using AVA found in App.test.js
+Currently only testing one component in the file, will be modular soon.
+
 
 ### `npm run build`
 
