@@ -9,6 +9,7 @@ import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
 
+//Basic test to see if result item has a classname
 test('has a .result-item classname', (t) => {
   const wrapper = shallow(<UnconnectedResultItem
     result={{
@@ -21,14 +22,11 @@ test('has a .result-item classname', (t) => {
 });
 
 //With JSX Helpers
-
 test('renders correct markup', (t) => {
   const actual = renderJSX(<UnconnectedResultItem
-    result={{
-      url: 'www.foo.com',
-      title: 'foo',
-      description: 'bar'
-    }}
+    url={'www.foo.com'}
+    title={'foo'}
+    description={'bar'}
     />);
   const expected = JSX(
     <div className="result-item" onClick={undefined}>

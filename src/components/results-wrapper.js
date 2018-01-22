@@ -7,8 +7,9 @@ class ResultsWrapper extends Component {
 
   renderResultItems() {
     const resultItems = this.props.results.map((result, i) => {
+      const { url, title, description } = result;
       return (
-        <ResultItem result={result} key={i} resultIndex={i} />
+        <ResultItem url={url} title={title} description={description} key={i} resultIndex={i} />
       );
     });
     return resultItems;
