@@ -10,21 +10,30 @@ import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
 
 test('has a .result-item classname', (t) => {
-  const wrapper = shallow(<UnconnectedResultItem />);
-  t.true(wrapper.hasClass('.result-item'));
+  const wrapper = shallow(<UnconnectedResultItem
+    result={{
+      url: 'www.foo.com',
+      title: 'foo',
+      description: 'bar'
+    }}
+  />);
+  t.true(wrapper.hasClass('result-item'));
 });
 
 //With JSX Helpers
 
 test('renders correct markup', (t) => {
   const actual = renderJSX(<UnconnectedResultItem
-    title="foo"
-    description="bar"
+    result={{
+      url: 'www.foo.com',
+      title: 'foo',
+      description: 'bar'
+    }}
     />);
   const expected = JSX(
-    <div classname="result-item">
-      <div classname="result-title">foo</div>
-      <div classname="result-description">bar</div>
+    <div className="result-item" onClick={undefined}>
+      <div className="result-title">foo</div>
+      <div className="result-description">bar</div>
     </div>
   );
   t.is(actual, expected);
