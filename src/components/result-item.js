@@ -21,6 +21,8 @@ class ResultItem extends Component {
   }
 }
 
+export const UnconnectedResultItem = ResultItem;
+
 function mapDispatchToProps(dispatch, ownProps) {
   return {
     setSelectedResult: () => {
