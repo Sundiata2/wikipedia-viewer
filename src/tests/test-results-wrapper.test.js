@@ -45,13 +45,13 @@ const initialState = {
     { title: 'First title', description: 'First Description', url: 'www.foo.com' },
     { title: 'Second title', description: 'Second Description', url: 'www.foo.com' },
     { title: 'Third title', description: 'Third Description', url: 'www.foo.com' },
-    { title: 'First title', description: 'First Description', url: 'www.foo.com' },
-    { title: 'Second title', description: 'Second Description', url: 'www.foo.com' },
-    { title: 'First title', description: 'First Description', url: 'www.foo.com' },
-    { title: 'Second title', description: 'Second Description', url: 'www.foo.com' },
-    { title: 'First title', description: 'First Description', url: 'www.foo.com' },
-    { title: 'Second title', description: 'Second Description', url: 'www.foo.com' },
-    { title: 'Second title', description: 'Second Description', url: 'www.foo.com' }
+    { title: 'Fourth title', description: 'First Description', url: 'www.foo.com' },
+    { title: 'Fifth title', description: 'Second Description', url: 'www.foo.com' },
+    { title: 'Sixth title', description: 'First Description', url: 'www.foo.com' },
+    { title: 'Seventh title', description: 'Second Description', url: 'www.foo.com' },
+    { title: 'Eighth title', description: 'First Description', url: 'www.foo.com' },
+    { title: 'Ninth title', description: 'Second Description', url: 'www.foo.com' },
+    { title: 'Tenth title', description: 'Second Description', url: 'www.foo.com' }
   ]
 };
 
@@ -73,5 +73,7 @@ test('given data results wrapper will have 10 resultItems', (t) => {
       <ResultsWrapper />
     </Provider>
   );
-  t.is(10, wrapper.find('.result-item').length);
+  t.is(10, wrapper.find('ResultItem').length);
 });
+
+
