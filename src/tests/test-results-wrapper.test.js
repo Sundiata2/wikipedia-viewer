@@ -73,6 +73,5 @@ test('given data results wrapper will have 10 resultItems', (t) => {
       <ResultsWrapper />
     </Provider>
   );
-  console.log(wrapper.find('.result-item'));
   t.is(10, wrapper.find('.result-item').length);
 });

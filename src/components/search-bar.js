@@ -24,11 +24,7 @@ class SearchBar extends Component {
   }
 }
 
-function mapStateToProps(state, ownProps) {
-  return {
-    results: state.results
-  };
-};
+export const UnconnectedSearchBar = SearchBar;
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
@@ -42,4 +38,4 @@ function mapDispatchToProps(dispatch, ownProps) {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
+export default connect(null, mapDispatchToProps)(SearchBar);
