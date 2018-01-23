@@ -1,38 +1,63 @@
+import test from 'ava';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import test from 'ava';
-import { shallow } from 'enzyme';
-import { renderJSX, JSX } from 'jsx-test-helpers';
-import { UnconnectedResultItem } from './components/result-item';
+import { mount } from 'enzyme';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import App from './App';
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import jsdom from 'jsdom';
+
+
+function setUpDomEnvironment() {
+  const { JSDOM } = jsdom;
+  const dom = new JSDOM('<!doctype html><html><body></body></html>', {url: 'http://localhost/'});
+  const { window } = dom;
+  global.window = window;
+  global.document = window.document;
+  global.navigator = {
+    userAgent: 'node.js'
+  };
+  copyProps(window, global);
+}
+
+function copyProps(src, target) {
+  const props = Object.getOwnPropertyNames(src).filter(prop => {
+    return typeof target[prop] === 'undefined';
+  }).map(prop => {
+    return Object.getOwnPropertyDescriptor(src, prop)
+  });
+  Object.defineProperties(target, props)
+}
+
+setUpDomEnvironment();
 
 configure({ adapter: new Adapter() });
 
-//Basic test to see if result item has a classname
-test('has a .result-item classname', (t) => {
-  const wrapper = shallow(<UnconnectedResultItem
-    result={{
-      url: 'www.foo.com',
-      title: 'foo',
-      description: 'bar'
-    }}
-  />);
-  t.true(wrapper.hasClass('result-item'));
-});
+const mockStore = configureStore();
+const initialState = {
+  results: [
+    { title: 'First title', description: 'First Description', url: 'www.foo.com' },
+    { title: 'Second title', description: 'Second Description', url: 'www.foo.com' },
+    { title: 'Third title', description: 'Third Description', url: 'www.foo.com' },
+    { title: 'First title', description: 'First Description', url: 'www.foo.com' },
+    { title: 'Second title', description: 'Second Description', url: 'www.foo.com' },
+    { title: 'First title', description: 'First Description', url: 'www.foo.com' },
+    { title: 'Second title', description: 'Second Description', url: 'www.foo.com' },
+    { title: 'First title', description: 'First Description', url: 'www.foo.com' },
+    { title: 'Second title', description: 'Second Description', url: 'www.foo.com' },
+    { title: 'Second title', description: 'Second Description', url: 'www.foo.com' }
+  ]
+};
 
-//With JSX Helpers
-test('renders correct markup', (t) => {
-  const actual = renderJSX(<UnconnectedResultItem
-    url={'www.foo.com'}
-    title={'foo'}
-    description={'bar'}
-    />);
-  const expected = JSX(
-    <div className="result-item" onClick={undefined}>
-      <div className="result-title">foo</div>
-      <div className="result-description">bar</div>
-    </div>
+test('renders without crashing', (t) => {
+  const div = document.createElement('div');
+  const store = mockStore(initialState);
+   ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    div
   );
-  t.is(actual, expected);
 });
