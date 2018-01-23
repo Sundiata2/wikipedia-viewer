@@ -65,3 +65,14 @@ test('dispatches setSelectedResult action on click', (t) => {
   wrapper.find('ResultItem').at(0).simulate('click');
   t.deepEqual(store.getActions(), [setSelectedResult(0)]);
 });
+
+test('given data results wrapper will have 10 resultItems', (t) => {
+  const store = mockStore(initialState);
+  const wrapper = mount(
+    <Provider store={store}>
+      <ResultsWrapper />
+    </Provider>
+  );
+  console.log(wrapper.find('.result-item'));
+  t.is(10, wrapper.find('.result-item').length);
+});
