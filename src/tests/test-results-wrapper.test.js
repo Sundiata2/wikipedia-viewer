@@ -9,13 +9,35 @@ import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import jsdom from 'jsdom';
 
+function setUpDomEnvironment() {
+  const { JSDOM } = jsdom;
+  const dom = new JSDOM('<!doctype html><html><body></body></html>', {url: 'http://localhost/'});
+  const { window } = dom;
+  global.window = window;
+  global.document = window.document;
+  global.navigator = {
+    userAgent: 'node.js'
+  };
+  copyProps(window, global);
+}
+
+function copyProps(src, target) {
+  const props = Object.getOwnPropertyNames(src).filter(prop => {
+    return typeof target[prop] === 'undefined';
+  }).map(prop => {
+    return Object.getOwnPropertyDescriptor(src, prop)
+  });
+  Object.defineProperties(target, props)
+}
+
+//Set up global document setup
+// const document = (new JSDOM('<!doctype html><html><body></body></html>')).window;
+// global.document = document;
+// global.window = document.defaultView;
+
+setUpDomEnvironment();
+
 configure({ adapter: new Adapter() });
-
-//Set up global document setup (DOES NOT WORK)
-global.document = new jsdom.jsdom('<body></body>');
-global.window =  document.defaultView;
-global.navigator = window.navigator;
-
 
 const mockStore = configureStore();
 const initialState = [

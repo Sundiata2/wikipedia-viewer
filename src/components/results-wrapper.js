@@ -6,6 +6,8 @@ import { clearSelectedResult } from "../actions/search-actions";
 class ResultsWrapper extends Component {
 
   renderResultItems() {
+    const results = this.props.results;
+    debugger;
     const resultItems = this.props.results.map((result, i) => {
       const { url, title, description } = result;
       return (
