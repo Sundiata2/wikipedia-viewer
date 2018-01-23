@@ -40,11 +40,20 @@ setUpDomEnvironment();
 configure({ adapter: new Adapter() });
 
 const mockStore = configureStore();
-const initialState = [
-  { title: 'First title', description: 'First Description', url: 'www.foo.com' },
-  { title: 'Second title', description: 'Second Description', url: 'www.foo.com' },
-  { title: 'Third title', description: 'Third Description', url: 'www.foo.com' }
-];
+const initialState = {
+  results: [
+    { title: 'First title', description: 'First Description', url: 'www.foo.com' },
+    { title: 'Second title', description: 'Second Description', url: 'www.foo.com' },
+    { title: 'Third title', description: 'Third Description', url: 'www.foo.com' },
+    { title: 'First title', description: 'First Description', url: 'www.foo.com' },
+    { title: 'Second title', description: 'Second Description', url: 'www.foo.com' },
+    { title: 'First title', description: 'First Description', url: 'www.foo.com' },
+    { title: 'Second title', description: 'Second Description', url: 'www.foo.com' },
+    { title: 'First title', description: 'First Description', url: 'www.foo.com' },
+    { title: 'Second title', description: 'Second Description', url: 'www.foo.com' },
+    { title: 'Second title', description: 'Second Description', url: 'www.foo.com' }
+  ]
+};
 
 test('dispatches setSelectedResult action on click', (t) => {
   const store = mockStore(initialState);
