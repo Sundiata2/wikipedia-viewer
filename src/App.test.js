@@ -54,10 +54,12 @@ const initialState = {
 test('renders without crashing', (t) => {
   const div = document.createElement('div');
   const store = mockStore(initialState);
-   ReactDOM.render(
+  ReactDOM.render(
     <Provider store={store}>
       <App />
     </Provider>,
     div
   );
+  //Just a true assertion so that ava doesn't trip up on not having an assertion
+  t.is(4, 4);
 });
