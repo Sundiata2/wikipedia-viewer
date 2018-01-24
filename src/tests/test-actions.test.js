@@ -1,6 +1,6 @@
 import test from 'ava';
-import * as proxyquire from 'proxyquire';
-import { search, receiveResults, RECEIVE_RESULTS,  clearResults, setSelectedResult, clearSelectedResult } from '../actions/search-actions';
+import proxyquire from 'proxyquire';
+import { receiveResults, RECEIVE_RESULTS,  clearResults, setSelectedResult, clearSelectedResult } from '../actions/search-actions';
 
 //Test receive results
 const mockRawResults = [
@@ -33,7 +33,22 @@ test('given raw results we parse them properly', (t) => {
 
 
 //Test search action
-test('')
+const mockBody = `/**/(["b", ["bulls", "baseball", "bjj"], ["bulls are male cows", "baseball is cool", "bjj is cool"], ["bulls.com", "baseball.com", "bjj.com"]])`;
+
+test.cb('search dispatches proper function given a query', (t) => {
+  const { search } = proxyquire('../actions/search-actions', {
+    'xhr': (url, callback) => {
+      callback(null, null, mockBody);
+    }
+  });
+  const dispatch = (action) => {
+    t.is(action.type, 'RECEIVE_RESULTS');
+    t.end();
+  };
+  const getState = () => {};
+  const searchAction = search('b');
+  searchAction(dispatch, getState);
+});
 
 
 

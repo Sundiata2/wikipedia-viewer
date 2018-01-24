@@ -21,7 +21,6 @@ export function search(query = "apple") {
         }
         body = body.slice(5, body.length - 1);
         const parsedBody = JSON.parse(body);
-        debugger;
         dispatch(receiveResults(parsedBody));
       });
     });
