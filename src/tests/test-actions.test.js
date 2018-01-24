@@ -1,5 +1,6 @@
 import test from 'ava';
 import proxyquire from 'proxyquire';
+import configureStore from 'redux-mock-store';
 import { receiveResults, RECEIVE_RESULTS,  clearResults, setSelectedResult, clearSelectedResult } from '../actions/search-actions';
 
 //Test receive results
@@ -48,6 +49,30 @@ test.cb('search dispatches proper function given a query', (t) => {
   const getState = () => {};
   const searchAction = search('b');
   searchAction(dispatch, getState);
+});
+
+
+//Test clear results
+test('clear search result returns empty state', (t) => {
+  const mockStore = configureStore();
+  const initialState = {
+    results: [
+      { title: 'First title', description: 'First Description', url: 'www.foo.com' },
+      { title: 'Second title', description: 'Second Description', url: 'www.foo.com' },
+      { title: 'Third title', description: 'Third Description', url: 'www.foo.com' },
+      { title: 'First title', description: 'First Description', url: 'www.foo.com' },
+      { title: 'Second title', description: 'Second Description', url: 'www.foo.com' },
+      { title: 'First title', description: 'First Description', url: 'www.foo.com' },
+      { title: 'Second title', description: 'Second Description', url: 'www.foo.com' },
+      { title: 'First title', description: 'First Description', url: 'www.foo.com' },
+      { title: 'Second title', description: 'Second Description', url: 'www.foo.com' },
+      { title: 'Second title', description: 'Second Description', url: 'www.foo.com' }
+    ]
+  };
+  const store = mockStore(initialState);
+  t.is(mockStore.dispatch(clearResults()), {
+    type: 'CLEAR_RESULTS'
+  });
 });
 
 
