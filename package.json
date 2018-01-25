@@ -5,7 +5,6 @@
   "dependencies": {
     "node-sass": "^4.7.2",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-scripts": "1.0.17",
     "redux": "^3.7.2",
@@ -15,9 +14,33 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "ava",
     "eject": "react-scripts eject",
     "build-css": "node-sass src/sass/style.scss public/style.css",
     "watch-css": "node-sass -w src/sass/style.scss public/style.css"
+  },
+  "devDependencies": {
+    "ava": "^0.24.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jsdom": "^11.6.0",
+    "jsx-test-helpers": "^3.0.0",
+    "proxyquire": "^1.8.0",
+    "react-addons-test-utils": "^15.6.2",
+    "react-dom": "^16.2.0",
+    "redux-mock-store": "^1.4.0",
+    "sinon": "^4.2.0"
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  },
+  "babel": {
+    "presets": [
+      "react",
+      "@ava/stage-4"
+    ]
   }
 }

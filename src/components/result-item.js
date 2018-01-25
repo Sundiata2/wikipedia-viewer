@@ -9,9 +9,9 @@ class ResultItem extends Component {
   }
 
   render() {
-    const urlString = this.props.result.url;
-    const description = this.props.result.description;
-    const title = this.props.result.title;
+    const urlString = this.props.url;
+    const description = this.props.description;
+    const title = this.props.title;
     return (
       <div className="result-item" onClick={this.props.setSelectedResult}>
         <div className="result-title">{title}</div>
@@ -20,6 +20,8 @@ class ResultItem extends Component {
     );
   }
 }
+
+export const UnconnectedResultItem = ResultItem;
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
