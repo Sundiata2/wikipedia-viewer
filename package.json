@@ -19,5 +19,11 @@
     "eject": "react-scripts eject",
     "build-css": "node-sass src/sass/style.scss public/style.css",
     "watch-css": "node-sass -w src/sass/style.scss public/style.css"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
